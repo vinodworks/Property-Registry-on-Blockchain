@@ -1,0 +1,306 @@
+
+<!--Left Vertical Tab-->
+
+<div class="row">
+  <!--column 1-->
+  <div class="column left">
+    <div id="sidebar" class="sidebar "
+         style="width: inherit; background-color: #789499; opacity: 0.8; position:fixed; top:0; bottom: 0">
+      <div class="text-gray-400 text-uppercase px-5 px-lg-4 py-4 font-weight-bold small headings-font-family">
+        <!--<img src="../../assets/img/emblem.svg" width=100 height="100" class="center">-->
+        <!--<form id="searchForm" class="ml-auto d-inline-block d-lg-block">-->
+          <div class="form-group position-relative mb-0" style="top:10px">
+
+            <input type="search" placeholder="Search ..." class="form-control form-control-sm border-0 no-shadow pl-4" [(ngModel)]="propertyId">
+            <button (click)="go()">Go</button>
+            <button (click)="addUser()">Add</button>
+
+
+            <span>{{account}}</span>
+
+
+
+
+          </div>
+        <!--</form>-->
+      </div>
+    </div>
+  </div>
+
+<!--Middle Vertical Tab-->
+<div class="column middle">
+    <!--<router-outlet></router-outlet>-->
+
+
+<img src="../../assets/img/emblem.svg" width=200 height="180" class="center">
+
+
+
+<section class="timeline">
+
+    <div class="timeline-item">
+      <span class="date">
+        <span class="day">30<sup>th</sup></span>
+        <span class="month">Jan</span>
+        <span class="year">2014</span>
+      </span>
+
+      <div class="timeline-content js--fadeInLeft">
+
+        <h2><u>Land Registry</u></h2>
+
+        <h6>Smart Property storing property information in a distributed Blockchain network to provide trusted and accurate property data.<br>A System which underpins the economy by securing the ownership of all the registered land property.</h6>
+        </div>
+    </div>
+
+  <div class="timeline-item">
+      <span class="datenone">
+        <!--<span class="day">30<sup>th</sup></span>-->
+        <!--<span class="month">Jan</span>-->
+        <!--<span class="year">2014</span>-->
+      </span>
+
+      <div class="timeline-content js--fadeInRight">
+
+        <h2><u>Public(Property Owner)</u></h2>
+
+        <h6>Interested Party owning a property using land registry Blockchain to search and verify property information for ownership rights documents,<br> can attach prperty transfer documents and agreement between both the parties while selling a property.</h6>
+        </div>
+    </div>
+
+  <div class="timeline-item">
+      <span class="dateone">
+        <!--<span class="day">30<sup>th</sup></span>-->
+        <!--<span class="month">Jan</span>-->
+        <!--<span class="year">2014</span>-->
+      </span>
+
+      <div class="timeline-content js--fadeInLeft">
+
+        <h2><u>Public(Property Buyer)</u></h2>
+        <h6>Once the agreement is done on the paper for purchasing the property, seller initiates the title transfer function from the portal by attaching the reqired documents.<br> Buyer will get a notification to approve the title transfer initiative by seller and which again will be confirmed and verified by the Land Registry Department.</h6>
+        </div>
+    </div>
+
+    <!--<div class="timeline-item">-->
+  <!--<span class="date">-->
+        <!--<span class="day">30<sup>th</sup></span>-->
+        <!--<span class="month">Jan</span>-->
+        <!--<span class="year">2014</span>-->
+      <!--</span>-->
+
+
+      <!--<div class="timeline-content timeline-card js&#45;&#45;fadeInRight">-->
+
+        <!--<div class="timeline-img-header">-->
+          <!--<h2>Card Title</h2>-->
+        <!--</div>-->
+
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>-->
+        <!--<a class="bnt-more" href="javascript:void(0)">More</a>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <div class="timeline-item">
+
+      <span class="date">
+        <span class="day">30<sup>th</sup></span>
+        <span class="month">Jan</span>
+        <span class="year">2014</span>
+      </span>
+
+      <div class="timeline-content js--fadeInLeft">
+
+        <h2>Quote</h2>
+        <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta explicabo debitis omnis dolor iste fugit totam quasi inventore!</blockquote>
+      </div>
+    </div>
+
+  <!---->
+
+    <div class="timeline-item">
+    <span class="date">
+        <span class="day">30<sup>th</sup></span>
+        <span class="month">Jan</span>
+        <span class="year">2014</span>
+      </span>
+
+      <div class="timeline-content js--fadeInRight">
+
+        <h2>Title</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
+        <a class="bnt-more" href="javascript:void(0)">More</a>
+      </div>
+    </div>
+  <!---->
+
+
+    <div class="timeline-item">
+
+     <span class="date">
+        <span class="day">30<sup>th</sup></span>
+        <span class="month">Jan</span>
+        <span class="year">2014</span>
+      </span>
+
+      <div class="timeline-content timeline-card js--fadeInLeft">
+
+        <div class="timeline-img-header">
+          <h2>Card Title</h2>
+        </div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsa ratione omnis alias cupiditate saepe atque totam aperiam sed nulla voluptatem recusandae dolor, nostrum excepturi amet in dolores. Alias, ullam.</p>
+        <a class="bnt-more" href="javascript:void(0)">More</a>
+      </div>
+    </div>
+
+<!--Right Vertical Tab-->
+
+
+<div class="column right">
+
+
+
+    <div class="w3-sidebar w3-bar-block w3-card "
+         style="width: inherit ;
+         position: fixed;
+         top: 0;
+         right: 0;
+         background-image: url(../assets/img/2.jpg);
+         background-repeat: no-repeat;
+         background-size: cover;
+         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+         opacity: 0.8">
+
+
+      <div class="font-weight-bold">
+
+        <h3 class="w3-bar-item w3-button" style="background-color: #789499; width: 100%; padding-left: 10px; font-size: 20px; opacity: 0.8px;">
+          <a routerLink="/admin" id="abc">Admin</a></h3>
+        <h3 style="background-color: #789499; width: 100%; padding-left: 10px; font-size: 20px; opacity: 0.8px;">
+          BlockChain Activity</h3>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: x-small"><strong>Date: 25th Jan 2018</strong></a>
+        <a href="#" class="w3-bar-item w3-button">7:53 - <strong>Activity 1</strong></a>
+        <a href="#" class="w3-bar-item w3-button">8:43 - Activity 2</a>
+        <a href="#" class="w3-bar-item w3-button">9:22 - Activity 3</a>
+        <a href="#" class="w3-bar-item w3-button">10:37 - Activity 4</a>
+        <a href="#" class="w3-bar-item w3-button">11:02 - Activity 5</a>
+        <a href="#" class="w3-bar-item w3-button" style="font-size: x-small">
+          <strong>Date: 22th Jan 2018</strong></a>
+        <a href="#" class="w3-bar-item w3-button">7:02 - Activity 6</a>
+        <a href="#" class="w3-bar-item w3-button">9:57 - Activity 7</a>
+        <a href="#" class="w3-bar-item w3-button">14:53 - Activity 8</a>
+        <a href="#" class="w3-bar-item w3-button">17:22 - Activity 9</a>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="grid-container">-->
+  <!--<div class="item1">-->
+    <!--<div class="card center" style=" tab-align: center; margin-top: 15px; text-align: center;">-->
+  <!--&lt;!&ndash;<img src="img_avatar.png" alt="Avatar" style="width:100%">&ndash;&gt;-->
+  <!--<div class="container" >-->
+    <!--<h4><b>Land Registry</b></h4>-->
+    <!--&lt;!&ndash;<p>with property number</p>&ndash;&gt;-->
+  <!--</div>-->
+<!--</div>-->
+
+  <!--</div>-->
+
+
+
+  <!--<div class="item3">-->
+    <!--<div class="card" style=";margin-left: 20px; top: 100px">-->
+  <!--&lt;!&ndash;<img src="img_avatar.png" alt="Avatar" style="width:100%">&ndash;&gt;-->
+  <!--<div class="container" style="text-align: center;">-->
+    <!--<h4><b>Explore</b></h4>-->
+    <!--<h5>Registered Property Details</h5>-->
+  <!--</div>-->
+<!--</div>-->
+  <!--</div>-->
+
+
+
+
+  <!--<div class="item4">-->
+    <!--<div class="card" style="float: right; margin-right: 20px;">-->
+  <!--&lt;!&ndash;<img src="img_avatar.png" alt="Avatar" style="width:100%">&ndash;&gt;-->
+  <!--<div class="container" style="text-align: center;">-->
+    <!--<h4><b>Monitor</b></h4>-->
+    <!--<h5>Live Blockchain Activity</h5>-->
+  <!--</div>-->
+<!--</div>-->
+
+  <!--</div>-->
+  <!--<div class="item5">-->
+    <!--<div class="card" style="float: left;margin-left: 20px;top: 150px">-->
+  <!--&lt;!&ndash;<img src="img_avatar.png" alt="Avatar" style="width:100%">&ndash;&gt;-->
+  <!--<div class="container" style="text-align: center;">-->
+    <!--<h4><b>Visualize1</b></h4>-->
+    <!--<h5>Live Blockchain Activity</h5>-->
+  <!--</div>-->
+<!--</div>-->
+
+  <!--</div>-->
+  <!--<div class="item6">-->
+    <!--<div class="card" style="float: right; margin-right: 0;top: 150px">-->
+  <!--&lt;!&ndash;<img src="img_avatar.png" alt="Avatar" style="width:100%">&ndash;&gt;-->
+  <!--<div class="container" style="text-align: center;">-->
+    <!--<h4><b>Visualize2</b></h4>-->
+    <!--<h5>Live Blockchain Activity</h5>-->
+  <!--</div>-->
+<!--</div>-->
+
+  <!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="tree">-->
+	<!--<ul>-->
+		<!--<li>-->
+			<!--<a href="#">Parent</a>-->
+			<!--<ul>-->
+				<!--<li>-->
+					<!--<a href="#">Child</a>-->
+					<!--<ul>-->
+						<!--<li>-->
+							<!--<a href="#">Grand Child</a>-->
+						<!--</li>-->
+					<!--</ul>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a href="#">Child</a>-->
+					<!--<ul>-->
+						<!--<li><a href="#">Grand Child</a></li>-->
+						<!--<li>-->
+							<!--<a href="#">Grand Child</a>-->
+							<!--<ul>-->
+								<!--<li>-->
+									<!--<a href="#">Great Grand Child</a>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<a href="#">Great Grand Child</a>-->
+								<!--</li>-->
+								<!--<li>-->
+									<!--<a href="#">Great Grand Child</a>-->
+								<!--</li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li><a href="#">Grand Child</a></li>-->
+					<!--</ul>-->
+				<!--</li>-->
+			<!--</ul>-->
+		<!--</li>-->
+	<!--</ul>-->
+<!--</div>-->

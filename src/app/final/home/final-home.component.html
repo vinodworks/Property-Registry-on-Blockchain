@@ -1,0 +1,139 @@
+<mat-drawer-container class="example-container" autosize>
+
+
+  <mat-drawer #drawerLeft class="example-sidenav" mode="side" position="start" [opened]="leftSideNev">
+
+    <img *ngIf="currentPage=='land-dept'" id="erc_7211" src="/assets/img/emblem.svg" alt="Eth">
+
+    <app-final-side
+      (openLandDept)="setCurrentPropertyId($event)"
+      [Cicada_3301]="Cicada_3301"
+      [Cicada_3301Deployed]="Cicada_3301Deployed"
+      [notifications]="notifications"
+    >
+    </app-final-side>
+
+
+
+    <!--<mat-chip-list>-->
+      <!--<mat-chip *ngIf="currentPage!='main'" (click)="currentPage='main'">Main</mat-chip>-->
+      <!--<mat-chip color="accent" *ngIf="currentPage!='land-dept'" (click)="currentPage='land-dept'">Land Dept</mat-chip>-->
+      <!--<mat-chip color="accent" *ngIf="currentPage!='admin'" (click)="currentPage='admin'">Admin</mat-chip>-->
+      <!--<mat-chip color="accent" *ngIf="currentPage!='suadmin'" (click)="currentPage='suadmin'">SuperAdmin</mat-chip>-->
+      <!--<mat-chip color="accent" *ngIf="currentPage!='create-user'" (click)="currentPage='create-user'">Create User-->
+      <!--</mat-chip>-->
+    <!--</mat-chip-list>-->
+
+
+    <mat-list role="list">
+      <mat-list-item role="listitem" class="listitem" *ngIf="currentPage!='main'" (click)="currentPage='main'">Main</mat-list-item>
+      <!--<mat-list-item role="listitem" class="listitem" *ngIf="currentPage!='land-dept'" (click)="currentPage='land-dept'">Land Dept</mat-list-item>-->
+      <mat-list-item role="listitem" class="listitem" *ngIf="currentPage!='admin' && userInfo.utype==1" (click)="currentPage='admin'">Admin</mat-list-item>
+      <mat-list-item  role="listitem" class="listitem" *ngIf="currentPage!='suadmin' && userInfo.utype==2" (click)="currentPage='suadmin'">SuperAdmin</mat-list-item>
+
+      <mat-list-item role="listitem" class="listitem" *ngIf="currentPage!='create-user'" (click)="currentPage='create-user'">Create User</mat-list-item>
+
+      <mat-list-item role="listitem" class="listitem" *ngIf="currentPage!='search-user'" (click)="currentPage='search-user'">Search User</mat-list-item>
+    </mat-list>
+
+
+    <!--<div>{{notifications[0]}}</div>-->
+
+
+    <!--<p>Auto-resizing sidenav</p>-->
+    <!--<p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>-->
+    <!--<button (click)="showFiller = !showFiller" mat-raised-button>-->
+    <!--Toggle extra text-->
+    <!--</button>-->
+
+  </mat-drawer>
+
+
+  <mat-drawer *ngIf="rightSideNev" #drawerRight class="example-sidenav example-sidenav-2" mode="side" position="end"
+              [opened]="rightSideNev">
+
+    <!--<app-final-side></app-final-side>-->
+    {{accounts[0]}}
+    <mat-divider></mat-divider>
+    name:{{userInfo.name}}
+    <mat-divider></mat-divider>
+    utype: {{UserTypes[userInfo.utype]}}
+
+    <mat-divider></mat-divider>
+
+
+  </mat-drawer>
+
+  <mat-drawer *ngIf="rightSideNev2" #drawerRight class="example-sidenav example-sidenav-2" mode="side" position="end"
+              [opened]="rightSideNev2">
+
+    <!--<mat-drawer *ngIf="rightSideNev2" #drawerRight class="example-sidenav example-sidenav-2" mode="side" position="end"-->
+    <!--[opened]="rightSideNev2">-->
+
+
+    <h3>Initial Title Transfer Application</h3>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Eth id" value="" name="eth_id" [(ngModel)]="form0.eth_id">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Aadhaar" value="" name="aadhar" [(ngModel)]="form0.aadhar">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ipfs hash" value="" name="ipfs" [(ngModel)]="form0.ipfs_hash">
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button color="primary" (click)="sendRequest()">Send Request</button>
+
+  </mat-drawer>
+
+
+  <div [ngClass]="{'example-sidenav-content':currentPage=='main'}">
+
+
+    <!--<button type="button" mat-button (click)="drawer.toggle()">-->
+    <!--Toggle sidenav-->
+    <!--</button>-->
+
+
+    <!--<mat-tab-group mat-align-tabs="center" style="position: fixed;top: 300px; width: 100%">-->
+    <!--<mat-tab label="EXPLORE">Content 1</mat-tab>-->
+    <!--<mat-tab label="Second">Content 2</mat-tab>-->
+    <!--<mat-tab label="Third">Content 3</mat-tab>-->
+    <!--</mat-tab-group>-->
+
+    <!--animationDuration="0ms"-->
+
+    <app-final-main *ngIf="currentPage=='main'"></app-final-main>
+    <app-land-department *ngIf="currentPage=='land-dept'"
+                         (openRightSideNev2)="toggleRightSideNev()"
+                         [Cicada_3301]="Cicada_3301"
+                         [Cicada_3301Deployed]="Cicada_3301Deployed"
+                         [currentPropertyId]="currentPropertyId"
+                         [_currentPropertyId]="currentPropertyId"
+                         [accounts]="accounts"
+    ></app-land-department>
+
+    <app-final-admin [UserName]="userInfo.name" [accounts]="accounts" [Cicada_3301]="Cicada_3301"
+                     [Cicada_3301Deployed]="Cicada_3301Deployed"
+                     (rightSideNev2)="toggleRightSideNev()" *ngIf="currentPage=='admin'"></app-final-admin>
+
+    <app-final-suadmin [accounts]="accounts" [Cicada_3301]="Cicada_3301" [Cicada_3301Deployed]="Cicada_3301Deployed" *ngIf="currentPage=='suadmin'"></app-final-suadmin>
+
+    <app-final-create-user [accounts]="accounts" [Cicada_3301]="Cicada_3301" [Cicada_3301Deployed]="Cicada_3301Deployed"
+                           *ngIf="currentPage=='create-user'"></app-final-create-user>
+
+    <app-final-search-user
+      [accounts]="accounts"
+      [Cicada_3301]="Cicada_3301"
+      [Cicada_3301Deployed]="Cicada_3301Deployed"
+      *ngIf="currentPage=='search-user'"
+    ></app-final-search-user>
+
+  </div>
+
+</mat-drawer-container>

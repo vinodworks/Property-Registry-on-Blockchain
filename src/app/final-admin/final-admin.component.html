@@ -1,0 +1,58 @@
+<mat-card class="bcd" style="text-align: center">
+  Welcome, {{UserName}}
+</mat-card>
+<!--<mat-card class="bcd" style="text-align: center">Eth_Id: {{accounts[0]}}</mat-card>-->
+<div class="example-button-row">
+  <button mat-raised-button color="primary" (click)="toggleMe(1)">Registry Transfer<br>Request Approval</button>
+  <button mat-raised-button color="primary" (click)="toggleMe(2)">Create New<br>Property</button>
+</div>
+
+
+<mat-card *ngIf="forms[1]" class="faltu">
+  <mat-card-header>
+    <mat-card-title>Registry Transfer</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Transaction Id :- {{accounts[0]}}
+    </p>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Transaction id" value="Transaction Id :- {{accounts[0]}}" name="form0.eth_id" [(ngModel)]="form0.eth_id">
+      </mat-form-field>
+    <div class="example-button-row2">
+  <button mat-stroked-button>Accept</button>
+  <button mat-stroked-button color="warn">Reject</button>
+</div>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card *ngIf="forms[2]" class="faltu">
+  <mat-card-header>
+    <mat-card-title>Create New Property</mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="eth id" value="" name="form0.eth_id" [(ngModel)]="form0.eth_id">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="prop detail" value="" name="form0.prop" [(ngModel)]="form0.prop">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="coordinates" value="" name="form0.coordinates" [(ngModel)]="form0.coordinates">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ipfs data hash" value="" name="form0.hash" [(ngModel)]="form0.hash">
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" (click)="createNewProperty()">Add</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>

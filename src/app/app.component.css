@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+/*#qrcode {*/
+/*}*/
+
+/*#qrcode img {*/
+  /*width: 50px;*/
+  /*height: auto;*/
+/*}*/
+
+/*ul, #myUL {*/
+  /*list-style-type: none;*/
+/*}*/
+
+/*#myUL {*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+/*}*/
+
+/*.box {*/
+  /*cursor: pointer;*/
+  /*-webkit-user-select: none; !* Safari 3.1+ *!*/
+  /*-moz-user-select: none; !* Firefox 2+ *!*/
+  /*-ms-user-select: none; !* IE 10+ *!*/
+  /*user-select: none;*/
+/*}*/
+
+/*.box::before {*/
+  /*content: "\2610";*/
+  /*color: black;*/
+  /*display: inline-block;*/
+  /*margin-right: 6px;*/
+/*}*/
+
+/*.check-box::before {*/
+  /*content: "\2611";*/
+  /*color: dodgerblue;*/
+/*}*/
+
+/*.nested {*/
+  /*display: none;*/
+/*}*/
+
+/*.active {*/
+  /*display: block;*/
+/*}*/
+
+
+/*!*  23/2/2019  *!*/
+
+/*!* Create three unequal columns that floats next to each other *!*/
+/*.column {*/
+  /*float: left;*/
+  /*!*padding: 10px;*!*/
+  /*height: 100%; !* Should be removed. Only for demonstration *!*/
+/*}*/
+
+/*.left {*/
+  /*width: 20%;*/
+/*}*/
+
+/*.right {*/
+  /*width: 20%;*/
+/*}*/
+
+/*.middle {*/
+  /*position: relative;*/
+  /*top: 0;*/
+  /*width: 55%;*/
+  /*!*left:19%;*!*/
+  /*!*right: 20%;*!*/
+
+  /*!*background-color: #0b2e13;*!*/
+  /*!*width: 50%;*!*/
+  /*!*height: 100%;*!*/
+/*}*/
+
+/*!* Clear floats after the columns *!*/
+/*.row:after {*/
+  /*content: "";*/
+  /*display: table;*/
+  /*clear: both;*/
+/*}*/
+/*#abc:hover{*/
+  /*color: black;*/
+/*}*/
+
+/*@media screen and (max-width: 600px) {*/
+  /*.column {*/
+    /*width: 100%;*/
+  /*}*/
+/*}*/

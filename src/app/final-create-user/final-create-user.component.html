@@ -1,0 +1,19 @@
+<form class="example-form" style="margin: 20px">
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="name" value="" name="name" [(ngModel)]="name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="aadhaar" value="" name="aadhaar" [(ngModel)]="aadhaar">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Eth id" value="" name="eth_id" [(ngModel)]="eth_id">
+  </mat-form-field>
+
+
+   <button mat-raised-button color="primary" (click)="createUser()">Add New User</button>
+
+
+</form>

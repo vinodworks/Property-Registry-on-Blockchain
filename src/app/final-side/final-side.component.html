@@ -1,0 +1,42 @@
+<form class="example-form">
+
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Property Id" value="" [(ngModel)]="getPropertyId" name="getPropertyId" style="width: 250px;">
+    <button mat-icon-button (click)="showProperty()">
+    <mat-icon aria-label="Example icon-button with a heart icon">zoom_in</mat-icon>
+  </button>
+  </mat-form-field>
+
+  <mat-list>
+    <!--<h3 mat-subheader>Folders</h3>-->
+    <!--<mat-list-item *ngFor="let folder of folders" (click)="showProperty(folder.property_id)">-->
+      <!--<mat-icon mat-list-icon>place</mat-icon>-->
+      <!--<h4 mat-line>{{folder.property_id}}</h4>-->
+      <!--<p mat-line> {{folder.updated | date}} </p>-->
+    <!--</mat-list-item>-->
+
+
+    <mat-list-item class="bg-hover-blue" *ngIf="searchResult.trans_id!==undefined" (click)="openLandDept.emit(getPropertyId)" style="cursor: pointer; margin-bottom: 10px">
+      <mat-icon mat-list-icon>place</mat-icon>
+      <h4 mat-line>{{searchResult.address}}</h4>
+      <p mat-line> {{searchResult.coordinates}} </p>
+    </mat-list-item>
+
+
+
+
+    <!--<mat-divider style="margin-bottom: 5px"></mat-divider>-->
+
+    <!--<h3 mat-subheader>Notes</h3>-->
+    <!--<mat-list-item *ngFor="let note of notes">-->
+      <!--<mat-icon mat-list-icon>note</mat-icon>-->
+      <!--<h4 mat-line>{{note.name}}</h4>-->
+      <!--<p mat-line> {{note.updated | date}} </p>-->
+    <!--</mat-list-item>-->
+
+
+  </mat-list>
+
+
+</form>

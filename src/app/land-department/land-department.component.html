@@ -1,0 +1,161 @@
+<!--<mat-card class="card-size" style="display: inline-block">Simple card</mat-card>-->
+
+<!--<mat-card class="card-size-tree"-->
+<!--style="-->
+<!--float: right;-->
+<!--display: inline-block;-->
+<!--margin-right: 20px;-->
+<!--width: 300px"-->
+<!--&gt;Hello-->
+<!--</mat-card>-->
+
+
+<!--<mat-card class="card-size-map example-sidenav-content">Simple card2</mat-card>-->
+
+
+<mat-grid-list cols="5" rowHeight="3:2" style="padding: 20px">
+  <mat-grid-tile
+    [colspan]="3"
+    [rowspan]="2"
+    [style.background]="''">
+
+    <mat-card style="width:100%;height:100%;">
+      <mat-card-title style="color:green">Land department</mat-card-title>
+
+      <mat-divider></mat-divider>
+      <mat-card-content style="margin-top: 20px">
+        <mat-card-subtitle>Property registration number</mat-card-subtitle>
+
+        <p><b>{{currentPropertyId}}</b></p>
+
+        <mat-card-subtitle>
+          Property address
+        </mat-card-subtitle>
+
+        <h3>{{address}}</h3>
+        <!--<h3>B 20 GOLE KA MANDIR</h3>-->
+
+        <mat-card-subtitle>
+          Issue Date
+        </mat-card-subtitle>
+        <h3>2-Mar-2019</h3>
+
+
+      </mat-card-content>
+
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="2"
+    [style.background]="''">
+
+    <!--border-right: 2px solid salmon-->
+
+    <mat-card style="width:100%;height:100%;">
+      <!--<img src="https://smallbiztrends.com/wp-content/uploads/2015/05/qr-code-sample.jpg"-->
+      <!--style="margin-top:35px; width:100%">-->
+      <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="currentPropertyId"
+                  style="margin-top:35px; width:100%"></ngx-qrcode>
+
+    </mat-card>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="5"
+    [style.background]="''">
+
+
+    <mat-vertical-stepper [linear]="isLinear" #stepper style="border-left: 2px solid salmon">
+      <div *ngFor="let h of transHistory;let i = index">
+        <mat-step [stepControl]="firstFormGroup" *ngIf="i%2">
+          <!--<form [formGroup]="firstFormGroup">-->
+          <form>
+            <ng-template matStepLabel>{{h._to}}</ng-template>
+            Aadhaar no. : {{h._aadhaar}}
+          </form>
+          <!--</form>-->
+        </mat-step>
+      </div>
+
+
+      <!--<mat-step [stepControl]="firstFormGroup">-->
+      <!--<form [formGroup]="firstFormGroup">-->
+      <!--<ng-template matStepLabel>Pankaj Devesh</ng-template>-->
+      <!--Aadhaar no. : 78679867564567-->
+      <!--</form>-->
+      <!--</mat-step>-->
+      <!--<mat-step [stepControl]="secondFormGroup">-->
+      <!--<form [formGroup]="secondFormGroup">-->
+      <!--<ng-template matStepLabel>Dipan Nanda</ng-template>-->
+      <!--Aadhaar no. : 16545156321452-->
+      <!--</form>-->
+      <!--</mat-step>-->
+      <!--<mat-step [stepControl]="secondFormGroup">-->
+      <!--<form [formGroup]="secondFormGroup">-->
+      <!--<ng-template matStepLabel>Nikhil Ram</ng-template>-->
+      <!--Aadhaar no. : 48523154551564-->
+      <!--</form>-->
+      <!--</mat-step>-->
+
+
+    </mat-vertical-stepper>
+
+
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="3"
+    [rowspan]="2"
+    [style.background]="''">
+
+
+    <mat-card style="width:100%;height: 100%;">
+
+      <iframe
+        width="100%"
+        height="100%"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+
+        [src]="mapUrl | safe"
+      ></iframe>
+    </mat-card>
+
+  </mat-grid-tile>
+
+
+  <mat-grid-tile
+    [colspan]="2"
+    [rowspan]="2"
+    [style.background]="''">
+
+
+    <mat-card style="width:100%;height: 100%;">
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" style="height: 80px;width: auto;margin: 10px"
+                (click)="openRightSideNev2.emit(true)"><h4> INITIAL TITLE TRANSFER </h4></button>
+        <button mat-raised-button color="warn" style="height: 80px;width: auto;margin: 10px"><h5>TITLE TRANSFER
+          APPROVAL</h5></button>
+      </div>
+    </mat-card>
+
+  </mat-grid-tile>
+
+
+</mat-grid-list>
+
+
+<!--<ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="currentPropertyId" [ngClass]="{qr: true}"></ngx-qrcode>-->
+
+
+
+
+

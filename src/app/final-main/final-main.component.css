@@ -1,0 +1,170 @@
+.example-container {
+  /*width: 500px;*/
+  /*height: 300px;*/
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid rgba(81, 187, 238, 0.5);
+
+}
+
+.example-sidenav-content {
+  display: flex;
+  /*height: 100%;*/
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+#erc_721 {
+  margin-top: 20px;
+  height: 200px;
+  align-content: center;
+}
+
+/*.hom{*/
+  /*margin-left: 40%;*/
+  /*margin-right: 40%;*/
+/*}*/
+
+
+
+/* cards */
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+
+
+.example-small-box, .example-large-box {
+  display: flex;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  /*height: 100px;*/
+  width: inherit;
+}
+
+.example-large-box {
+  height: 300px;
+  width: 300px;
+}
+
+ul li {
+  font-size: 25px;
+}
+
+.data {
+  font-size: 25px;
+}
+
+
+/*.vl {*/
+  /*margin: 10px;*/
+  /*padding-right: 10px;*/
+  /*border-left: 3px solid #cbcbcb;*/
+  /*!*height: 500px;*!*/
+/*}*/
+
+
+/*****************************************/
+
+
+ul {
+	list-style: none;
+  width: 100%; margin-right: 40px
+}
+
+li:first-child {
+	/*border-top: 2px solid #e6e6e6;*/
+}
+
+li {
+	/*border-bottom: 2px solid #e6e6e6;*/
+	position: relative;
+	transition: 0.2s ease-in-out;
+	display: block;
+	width: inherit;
+}
+
+li a {
+	display: block;
+	padding: 20px;
+	text-decoration: none;
+	color: #222;
+	transition: 0.2s ease-in-out;
+}
+
+li h3 {
+	margin: 0 0 15px;
+	font-size: 30px;
+	font-weight: 900;
+}
+
+li p {
+	margin: 0;
+	font-size: 20px;
+	max-width: calc(100% - 110px);
+}
+
+li i {
+	position: absolute;
+	top: 50%;
+	right: 25px;
+	transform: translatey(-50%);
+	font-size: 80px !important;
+	opacity: 0.25;
+}
+
+#first:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+#second:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+
+
+#third:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+#fourth:hover {
+	background-color: #333;
+	color: #fff;
+}
+
+
+#fifth:hover,
+#sixth:hover,
+#seventh:hover,
+#eight:hover{
+	background-color: #333;
+	color: #fff;
+}
+
+
+
+
+
+
+
+

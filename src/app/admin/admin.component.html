@@ -1,0 +1,165 @@
+<!--<div class="d-flex align-items-stretch">-->
+  <!--<div id="sidebar" class="sidebar " style="background-color:#72d8f1; width: 300px;">-->
+    <!--<div class="text-gray-400 text-uppercase px-5 px-lg-4 py-4 font-weight-bold small headings-font-family">-->
+      <!--<img src="../../assets/img/emblem.svg" width=100 height="100" class="center">-->
+      <!--<form id="searchForm" class="ml-auto d-inline-block d-lg-block">-->
+        <!--<div class="form-group position-relative mb-0" style="top:10px">-->
+
+          <!--<input type="search" placeholder="Search ..." class="form-control form-control-sm border-0 no-shadow pl-4">-->
+          <!--<ul class="list-group py-4" style="color:black;" >-->
+            <!--<li class="list-group-item">Cras justo odio</li>-->
+            <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
+            <!--<li class="list-group-item">Morbi leo risus</li>-->
+            <!--<li class="list-group-item">Porta ac consectetur ac</li>-->
+            <!--<li class="list-group-item">Vestibulum at eros</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="w3-sidebar w3-bar-block w3-card"-->
+    <!--style="width:25%;right:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">-->
+    <!--<h3 class="w3-bar-item">BlockChain Activity</h3>-->
+    <!--<a href="#" class="w3-bar-item w3-button" style="font-size: x-small"><strong>Date: 25th Jan 2018</strong></a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">7:53 - <strong>Activity 1</strong></a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">8:43 - Activity 2</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">9:22 - Activity 3</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">10:37 - Activity 4</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">11:02 - Activity 5</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button" style="font-size: x-small"><strong>Date: 22th Jan 2018</strong></a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">7:02 - Activity 6</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">9:57 - Activity 7</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">14:53 - Activity 8</a>-->
+    <!--<a href="#" class="w3-bar-item w3-button">17:22 - Activity 9</a>-->
+  <!--</div>-->
+  <div class="page-holder w-100 d-flex flex-wrap" style="background-color: whitesmoke; margin-top: 10px; text-align: center;">
+    <div class="container-fluid px-xl-8" >
+      <section>
+        <div class="row mb-6">
+          <div class="col-lg-12 mb-6 mb-lg-0">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="h6 text-uppercase mb-0">Welcome</h2>
+              </div>
+              <div class="card-body">
+                {{account.account}}
+                {{account.info[0]}}
+                {{account.info[1]}}
+                {{account.info[2]}}
+
+                <p>Super Admin</p>
+              </div>
+
+
+            </div>
+
+            <section class="py-5 noselect" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+              <div class="row text-dark">
+
+
+
+                <div class="col-lg-4 mb-4 mb-lg-0" (click)='toggle(0)'>
+                  <div class="card rounded credit-card bg-hover-gradient-gray-100">
+                    <div class="content d-flex flex-column justify-content-between" style="height: auto">
+                      <h1 class="mb-5"><i class="fab fa-cc-visa"></i></h1>
+                      <div class="d-flex justify-content-between align-items-end pt-1">
+                        <div class="text-uppercase">
+                          <div class="font-weight-bold d-block" style="vertical-align: center; font-size: 20px; text-align: center; horiz-align: center">Change Registered User Status</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-lg-4 mb-4 mb-lg-0" (click)='toggle(1)'>
+                  <div class="card rounded credit-card bg-hover-gradient-gray-100">
+                    <div class="content d-flex flex-column justify-content-between" style="height: auto">
+                      <h1 class="mb-5"><i class="fab fa-cc-visa"></i></h1>
+                      <div class="d-flex justify-content-between align-items-end pt-1">
+                        <div class="text-uppercase">
+                          <div class="font-weight-bold d-block" style="vertical-align: center; font-size: 20px; text-align: center; horiz-align: center">Registry Transfer Request Approval</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-lg-4 mb-4 mb-lg-0" (click)='toggle(2)'>
+                  <div class="card rounded credit-card bg-hover-gradient-gray-100">
+                    <div class="content d-flex flex-column justify-content-between" style="height: auto">
+                      <h1 class="mb-5"><i class="fab fa-cc-visa"></i></h1>
+                      <div class="d-flex justify-content-between align-items-end pt-1">
+                        <div class="text-uppercase">
+                          <div class="font-weight-bold d-block" style="vertical-align: center; font-size: 20px; text-align: center; ">Create New Property</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </section>
+
+
+
+          </div>
+        </div>
+      </section>
+      <div class="col-lg-8 mb-6 mb-lg-0" id="myDIV" *ngIf='forms[0]'>
+        <div class="card">
+          <div class="card-body center">
+            <input type="search" placeholder="              Etherium Id (14 Digits)"
+              class="form-control form-control-sm border-1 no-shadow pl-6" [(ngModel)]="form1.EthAccount">
+
+
+            <form class="center border-1">
+              <select name="Status Change" [(ngModel)]="form1.userType">
+                <option value="0">User</option>
+                <option value="1">Admin</option>
+                <option value="2">Super Admin</option>
+              </select>
+              <br><br>
+              <div class="centre border-1">
+                <button (click)="changeUserDomain()">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 mb-6 mb-lg-0" id="myDIV" *ngIf='forms[1]'>
+        <div class="card">
+          <div class="card-body center">
+            <p>E_id_owner &nbsp;&nbsp;&nbsp; ----> &nbsp;&nbsp; E_id_buyer</p>
+            <a href="http://sunny.freeservers.com/flowers.pdf">PDF</a>
+            <input type="checkbox" name="love" value="love" id="love"><label for="love">Reviewed</label>
+            <form action="/action_page.php" class="center border-1">
+              <br><br>
+              <div class="centre border-1">
+                <button>Approve</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 mb-6 mb-lg-0" id="myDIV" *ngIf='forms[2]'>
+        <div class="card">
+          <div class="card-body center">
+            <p>&nbsp;&nbsp;&nbsp;Empty</p>
+
+            <form action="/action_page.php" class="center border-1">
+              <br><br>
+              <div class="centre border-1">
+                <button (click)='toggle(2)'>ok</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--</div>-->

@@ -1,0 +1,24 @@
+  <mat-card class="bcd" style="text-align: center" >Welcome, Super Admin</mat-card>
+  <!--<mat-card class="bcd" style="text-align: center">Eth_Id: {{accounts[0]}}</mat-card>-->
+<!--<div class="example-button-row">-->
+  <!--<button mat-raised-button color="primary" (click)="toggleMe(0)">Change Registered<br>User Status</button>-->
+<!--</div>-->
+
+
+<mat-card *ngIf="forms[0]" class="faltu" style="margin-top: 20px">
+  <mat-card-header>
+    <mat-card-title>Chang User Domain</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="User id" value="" name="id" [(ngModel)]="userId">
+      </mat-form-field>
+    <div class="example-button-row2">
+  <button mat-stroked-button color="accent" (click)="changeUserDomain(0)">User</button>
+  <button mat-stroked-button color="warn" (click)="changeUserDomain(1)">Admin</button>
+  <button mat-stroked-button (click)="changeUserDomain(2)">Super Admin</button>
+</div>
+  </mat-card-content>
+</mat-card>
+

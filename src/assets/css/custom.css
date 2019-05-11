@@ -1,0 +1,15 @@
+/* your styles go here */
+.change_size{
+    height: 50px;
+}
+.googleMap {
+    width: 130%;
+    height: 330px;
+}
+/* your styles go here */
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%
+}

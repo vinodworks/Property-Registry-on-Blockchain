@@ -1,0 +1,19 @@
+<div class="container-fluid">
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="search by aadhaar id" value="" name="aadhaar_id" [(ngModel)]="aadhaar_id">
+    </mat-form-field>
+  </form>
+
+  <button mat-stroked-button color="primary" (click)="searchById()">Search User</button>
+
+  <br>
+  <span *ngIf="userEthAccount">User Eth account: {{userEthAccount}}</span><br>
+  <span *ngIf="userEthAccount">User name: {{userName}}</span><br>
+  <span *ngIf="userEthAccount">User type: {{userType}}</span><br>
+
+</div>
+
+
+
