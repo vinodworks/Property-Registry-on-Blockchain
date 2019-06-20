@@ -1,19 +1,17 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
-
-contract Cicada_3301 {
-
-    struct Obj {
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
+contract Cicada_3301 is ERC721Full("GovCoin","GTC") {
+     struct Obj {
         uint _prev;
         uint _next;
     }
 
-    // User
-    // defination
+    // define User
     enum UserType {user, admin, super_admin}
     struct Person {
         string name;        // Name
-        uint adr;           // Aadhaar number
+        uint adr;           // Aadhar number
         UserType utype;     // User type
 
         // Properties Associated with a user
@@ -23,21 +21,26 @@ contract Cicada_3301 {
         // Property buyRequest
         mapping(uint => Obj) requestList;
         uint requestListTop;
+
+        // Property buyRequest
+        mapping(uint => Obj) approvalRequest;
+        uint approvalRequestTop;
     }
 
-    // User decleration
+
     bool super_admin_created = false; // Create the first User as SuperAdmin
     mapping(address => Person) users;
     mapping(uint => address) aadhaarmap;
-
+    address[] admins;
 
 
     // Property
     // defination
     struct PropertyDetail {
         string _info;           // information about the property
-        // string _data_hash;      // ipfs hash of associated data
-        uint _trans_id;         // Transaction id
+        uint _trans_id;  // Transaction id
+
+
     }
 
     // defination
@@ -45,25 +48,31 @@ contract Cicada_3301 {
     mapping(uint => PropertyDetail) properties;
     uint private property_counter = 1;
 
-
     // Tranction
-    enum TranctionState {requested, approved, rejected}
+    enum TransectionState {requested, approved, rejected}
 
     // Tranction block
-    struct Tranction {
+    struct Transection {
         address _from;          // sender
         address _to;            // buyer
         uint256 _prev;          // previous Tranction block id
         uint256 _prop;          // property id { any property }
-        TranctionState _state;  // state of Tranction
-        address approved_by;
+
+        address approved_by1;
+        address approved_by2;
+
+        TransectionState _state1;  // state of Transection by first random admin
+        TransectionState _state2;  // state of Transection by second random admin
+
+
         string _ipfs_hash;
+        uint256 _time;            // timestamp of Transection creation
     }
 
     // mapping all the Tranction records
-    mapping(uint256 => Tranction) recordlist;
-    mapping(uint256 => Obj) requestList;
-    uint256 requestListTop = 0;
+    mapping(uint256 => Transection) recordlist;
+    // mapping(uint256 => Obj) requestList;
+    // uint256 requestListTop = 0;
     uint256 requestListCounter = 1;
 
 
@@ -80,8 +89,6 @@ contract Cicada_3301 {
         _;
     }
 
-
-
     //User Logic
     // adding the user with services
     function addUser(string memory _name, uint _adr, address _userId) public {
@@ -96,21 +103,24 @@ contract Cicada_3301 {
             // set initial pointers
             users[_userId].requestListTop = 0;
             users[_userId].propertiesTop = 0;
+            users[_userId].approvalRequestTop = 0;
+
             aadhaarmap[_adr] = _userId;
 
             // make the first user super admin
             if(super_admin_created == false) {
                  users[_userId].utype = UserType.super_admin;
+                 admins.push(msg.sender);
                  super_admin_created = true;
             }
         }
     }
 
-
     function changeUserDomain(address _userId, UserType _utype) public isSuperAdmin {
         require(_utype != UserType.super_admin);
         users[_userId].utype = _utype;
     }
+
 
     // add property in requestList {if the user is requested to sell there property}
     function addPropertyRequest(address _buyer_id, uint _prop_id, string memory ipfs_hash) public {
@@ -130,6 +140,66 @@ contract Cicada_3301 {
     }
 
 
+    // add new Tranction requested {Tranction requested! not a final Tranction}
+    function addRecord(address _from_address, address _to_address, uint256 _prop_id, string memory ipfs_hash) public returns(uint256) {
+        recordlist[requestListCounter]._from = _from_address;
+        recordlist[requestListCounter]._to = _to_address;
+        recordlist[requestListCounter]._prop = _prop_id;
+
+
+        recordlist[requestListCounter]._state1 = TransectionState.requested;
+        recordlist[requestListCounter]._state2 = TransectionState.requested;
+
+        recordlist[requestListCounter]._ipfs_hash = ipfs_hash;
+        recordlist[requestListCounter]._time = block.timestamp;
+
+        // link the new block to the previous block
+        recordlist[requestListCounter]._prev = properties[_prop_id]._trans_id;
+
+        // point the new request
+        properties[_prop_id]._trans_id = requestListCounter;
+
+
+        // select two random admins and send notification to them
+        random(admins.length, _prop_id);
+
+        // notify(requestListCounter);
+
+        return (requestListCounter++);
+    }
+
+    function random(uint adminCount, uint _prop_id) private {
+        uint one = block.timestamp % adminCount;
+        uint two = (one + block.timestamp) % adminCount;
+        if(one == two) two = (one + 1) % adminCount;
+
+        recordlist[requestListCounter].approved_by1 = admins[one];
+        recordlist[requestListCounter].approved_by2 = admins[two];
+
+        notify(admins[one], _prop_id);
+        notify(admins[two], _prop_id);
+
+   }
+
+   // add new property on list {}
+    function addProperty(address _userId, uint _req_id) public {
+        // add new property on top of the list
+        users[_userId].properties[users[_userId].propertiesTop]._next = _req_id;
+
+        // link the top block with the previous block
+        users[_userId].properties[_req_id]._prev = users[_userId].propertiesTop;
+
+        // mark the top as the end block
+        users[_userId].properties[_req_id]._next = 0;
+
+        // set the pointer to the top block / latest block
+        users[_userId].propertiesTop = _req_id;
+    }
+    function tokenDetails(uint _id) public  view returns(uint256,address) {
+      return(totalSupply(), ownerOf(_id));
+
+
+    }
     // remove the property request from  the requestList
     function removePropertyRequest(address _userId, uint _req_id) public {
         // shift the pointer to the previous block if - removing the top block
@@ -145,42 +215,6 @@ contract Cicada_3301 {
     }
 
 
-
-    // add new Tranction requested {Tranction requested! not a final Tranction}
-    function addRecord(address _from_address, address _to_address, uint256 _prop_id, string memory ipfs_hash) public returns(uint256) {
-        recordlist[requestListCounter]._from = _from_address;
-        recordlist[requestListCounter]._to = _to_address;
-        recordlist[requestListCounter]._prop = _prop_id;
-        recordlist[requestListCounter]._state = TranctionState.requested;
-        recordlist[requestListCounter]._ipfs_hash = ipfs_hash;
-
-        // link the new block to the previous block
-        recordlist[requestListCounter]._prev = properties[_prop_id]._trans_id;
-
-        // point the new request
-        properties[_prop_id]._trans_id = requestListCounter;
-
-        notify(requestListCounter);
-
-        return (requestListCounter++);
-    }
-
-
-    // add new property on list
-    function addProperty(address _userId, uint _req_id) public {
-        // add new property on top of the list
-        users[_userId].properties[users[_userId].propertiesTop]._next = _req_id;
-
-        // link the top block with the previous block
-        users[_userId].properties[_req_id]._prev = users[_userId].propertiesTop;
-
-        // mark the top as the end block
-        users[_userId].properties[_req_id]._next = 0;
-
-        // set the pointer to the top block / latest block
-        users[_userId].propertiesTop = _req_id;
-    }
-
     function removeProperty(address _userId, uint _req_id) public {
         // sift the pointer to the previous block if - removing the top block
         if(users[_userId].propertiesTop == _req_id) users[_userId].propertiesTop = users[_userId].properties[_req_id]._prev;
@@ -195,55 +229,83 @@ contract Cicada_3301 {
     }
 
 
-
-
     // notify admin
-    function notify(uint _req_id) public {
+    function notify(address admin_id, uint _req_id) public {
 
         // add the pointer of the transection request to the requestList
-        requestList[requestListTop]._next = _req_id;
+        users[admin_id].approvalRequest[users[admin_id].approvalRequestTop]._next = _req_id;
 
         // link the top requestList block to the previous block
-        requestList[_req_id]._prev = requestListTop;
+        users[admin_id].approvalRequest[_req_id]._prev = users[admin_id].requestListTop;
 
         // make the top pointer as the end of the list
-        requestList[_req_id]._next = 0;
+        users[admin_id].approvalRequest[_req_id]._next = 0;
 
         // save the pointer to the top of the requestList
-        requestListTop = _req_id;
+        users[admin_id].approvalRequestTop = _req_id;
     }
-
 
 
     // Views
     // get User information
-    function getUser(address _userId) view public returns(string memory, uint, UserType) {
+    function getUser(address _userId) view public returns(string memory, uint, UserType, uint256) {
         // return username, aadhaar-number, user-domain
-        return (users[_userId].name, users[_userId].adr, users[_userId].utype);
+        return (users[_userId].name, users[_userId].adr, users[_userId].utype, balanceOf(_userId));
     }
 
-    function viewPropertyDetail(uint _prop_id)view public returns(string memory, uint) {
-        return (properties[_prop_id]._info, properties[_prop_id]._trans_id);
-    }
-
-    function viewTranction(uint _trans_id)view public returns(address, address, uint, uint, TranctionState, address, string memory) {
-        return (recordlist[_trans_id]._from, recordlist[_trans_id]._to, recordlist[_trans_id]._prev, recordlist[_trans_id]._prop, recordlist[_trans_id]._state,  recordlist[_trans_id].approved_by, recordlist[_trans_id]._ipfs_hash);
+    function viewPropertyDetail(uint _prop_id)view public returns(string memory, uint, address) {
+        return (properties[_prop_id]._info, properties[_prop_id]._trans_id, ownerOf(_prop_id));
     }
 
 
+    // function viewTranction(uint _trans_id)view public returns(address,address, uint256, uint256, address, address, TransectionState , TransectionState , string memory ) {
+    //     return (recordlist[_trans_id]._from, recordlist[_trans_id]._to, recordlist[_trans_id]._prev, recordlist[_trans_id]._prop, recordlist[_trans_id].approved_by1, recordlist[_trans_id].approved_by2, recordlist[_trans_id]._state1, recordlist[_trans_id]._state2, recordlist[_trans_id]._ipfs_hash);
+    // }
 
+    function getTransectionSender(uint256 _trans_id) view public returns(address){
+        return recordlist[_trans_id]._from;
+    }
 
-    ////////////////////////////////////////////////////////////
+    function getTransectionTime(uint256 _trans_id) view public returns(uint256){
+        return recordlist[_trans_id]._time;
+    }
+
+    function getTransectionTo(uint256 _trans_id) view public returns(address){
+        return recordlist[_trans_id]._to;
+    }
+
+    function getTransectionPrev(uint256 _trans_id) view public returns(uint256){
+        return recordlist[_trans_id]._prev;
+    }
+
+    function getTransectionProp(uint256 _trans_id) view public returns(uint256){
+        return recordlist[_trans_id]._prop;
+    }
+
+    function getTransectionApproveInfo(uint256 _trans_id) view public returns(address, address, TransectionState, TransectionState){
+        return (recordlist[_trans_id].approved_by1, recordlist[_trans_id].approved_by2, recordlist[_trans_id]._state1, recordlist[_trans_id]._state2);
+    }
+
+    function getTransectionHashAndTime(uint256 _trans_id) view public returns(string memory, uint256){
+        return (recordlist[_trans_id]._ipfs_hash, recordlist[_trans_id]._time);
+    }
+
     // approve the Tranction request
     function approve(uint256 _record_id) public isAdmin {
-        recordlist[_record_id]._state = TranctionState.approved;
-        recordlist[_record_id].approved_by = msg.sender;
+        if(msg.sender == recordlist[_record_id].approved_by1){
+            recordlist[_record_id]._state1 = TransectionState.approved;
+        }
+
+         if(msg.sender == recordlist[_record_id].approved_by2){
+            recordlist[_record_id]._state2 = TransectionState.approved;
+        }
+
 
         // remove notification from user
         removePropertyRequest(recordlist[_record_id]._to, _record_id);
 
         // remove notification from admin
-        removeNotification(_record_id);
+        removeNotification(msg.sender, _record_id);
 
         addProperty(recordlist[_record_id]._to, _record_id);
         removeProperty(recordlist[_record_id]._to, _record_id);
@@ -258,23 +320,24 @@ contract Cicada_3301 {
         removePropertyRequest(recordlist[_record_id]._to, _record_id);
 
         // remove notification from admin
-        removeNotification(_record_id);
+        removeNotification(msg.sender, _record_id);
     }
     ///////////////////////////////////////////////////////////
 
-    function removeNotification(uint _req_id) public {
+     function removeNotification(address admin_id, uint _req_id) public {
         // sift the pointer to the previous block if - removing the top block
-        if(requestListTop == _req_id) requestListTop = requestList[_req_id]._prev;
+        if(users[admin_id].approvalRequestTop == _req_id) users[admin_id].approvalRequestTop = users[admin_id].approvalRequest[_req_id]._prev;
+
 
         // link the top block with the previous block
-        requestList[requestList[_req_id]._next]._prev = requestList[_req_id]._prev;
-        requestList[requestList[_req_id]._prev]._next = requestList[_req_id]._next;
+        users[admin_id].approvalRequest[users[admin_id].approvalRequest[_req_id]._next]._prev = users[admin_id].approvalRequest[_req_id]._prev;
+        users[admin_id].approvalRequest[users[admin_id].approvalRequest[_req_id]._prev]._next = users[admin_id].approvalRequest[_req_id]._next;
+
 
         // clear the current block
-        requestList[_req_id]._next = 0;
-        requestList[_req_id]._prev = 0;
+        users[admin_id].approvalRequest[_req_id]._prev = 0;
+        users[admin_id].approvalRequest[_req_id]._next = 0;
     }
-
 
     // send one property id at a time { default is 0 }
     function getNextPropertyId(address _userId, uint _ptr) view public returns(uint) {
@@ -288,26 +351,30 @@ contract Cicada_3301 {
 
     // send one notification id at a time { default is 0 }
     function getNextNotificationId(uint _ptr) view public returns(uint) {
-        return requestList[_ptr]._next;
+        return users[msg.sender].approvalRequest[_ptr]._next;
     }
-
 
     // create new property
     function createNewProperty(address _to, string memory _info, string memory _data_hash) public returns (uint) {
         properties[property_counter] = PropertyDetail(_info, requestListCounter);
 
-        recordlist[requestListCounter] = Tranction(address(0), _to, uint(0), property_counter, TranctionState.approved, msg.sender, _data_hash);
+        recordlist[requestListCounter]._to = _to;
+        recordlist[requestListCounter]._prop = property_counter;
+
+        random(admins.length, property_counter);
+
+        recordlist[requestListCounter]._ipfs_hash = _data_hash;
+        recordlist[requestListCounter]._time = block.timestamp;
+
 
         addProperty(_to, requestListCounter);
 
-        requestListCounter++;
+        uint id=requestListCounter++;
+        _mint(_to,id);
+        _setTokenURI(id,_info);
 
         //return property_id
-        return (property_counter++);
-  }
-
-  function searchByAadhaar(uint _aadhaar) view public returns(address) {
-    return (aadhaarmap[_aadhaar]);
+        return (id);
   }
 
 }

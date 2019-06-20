@@ -1,7 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 
-contract Cicada_3301 {
+contract newcicada {
+    
 
     struct Obj {
         uint _prev;

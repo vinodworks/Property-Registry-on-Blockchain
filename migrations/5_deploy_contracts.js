@@ -1,6 +1,6 @@
 
-var Property = artifacts.require("./Property.sol");
+var Cicada = artifacts.require("./newcicada.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Property);
+  deployer.deploy(Cicada);
 };

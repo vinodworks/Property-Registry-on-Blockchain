@@ -102,7 +102,7 @@ export class LandDepartmentComponent implements OnInit {
     return (pad + num).slice(-pad.length);
   }
 
-  async getPropertyInfo(prop_id) {
+ async getPropertyInfo(prop_id) {
     return this.Cicada_3301Deployed.viewPropertyDetail.call(prop_id).then(info => {
       const infoAboutProperty = JSON.parse(info[0]);
       const pos = infoAboutProperty.coordinates.split(',');
