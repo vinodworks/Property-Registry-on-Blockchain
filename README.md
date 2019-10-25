@@ -1,3 +1,5 @@
+**PROPERTY REGISTRY ON BLOCKCHAIN PORTAL**
+
 Registering information of property is very crucial to identify current and previous ownership. In absence of secure way to validate chain of ownership, same property can be fraudulently sold to multiple person. In a huge country like India, where registering and maintaining the property is a tedious task especially where the system is storing the information in centralized manner. We proposed the solution to the problems caused due to centralized data storage system such as fraudulency, corruption, lack of transparency in the system and immutable records.
 
 1. Features :
