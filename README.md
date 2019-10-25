@@ -19,15 +19,15 @@ Escrow Account for safe fund transfer
 
 2. Features that are good to have :
 
-Insurance company integration
-Data migration tool to assist property registry transfer from existing file systems into blockchain system.
-Loan Department could sanction loan to users to buy property.
+*Insurance company integration.
+*Data migration tool to assist property registry transfer from existing file systems into blockchain system.
+*Loan Department could sanction loan to users to buy property.
 
 3. Known Issues :
 
-IPFS operability
+IPFS operability.
 User will have to purchase token for the property.
-User will have to pay a legitimate amount of currency for the property transfer
+User will have to pay a legitimate amount of currency for the property transfer.
 * Implementation :
 Our model verify and validate user data and provide secure mutual agreement in property Registry, with the use of multi node ethereum blockchain which provides impeccable security through its decentralized architecture and the multi node architecture which we have designed. Every ownership transaction such as change in ownership, create new property are being verified by proof of stack algorithm. Super admin verify admin who can validate new property by stating property value, property ID, Issue Date, property owner aadhar number and approve initial title transfer. Current owner can request change his/her ownership to new owner, which will be approved by both parties mutual agreement approval and dual random admin authentication. ERC721 token will be issued to property and transferred according to mutual agreement between new buyer and seller. Property's unique hash ID will be the basis of transaction in blockchain. Property ownership records and financial transaction will be saved on distributed network using IPFS protocol which could be referenced if requested, which will provide strong auditability for transaction with time-stamp. User can browse through ownership history of any property which ensures full transparency. Blockchain will ensure the validity in chain of ownership which will prohibit selling a particular property to multiple users, ownership history could be mapped for each property.
 
@@ -35,9 +35,9 @@ Our model verify and validate user data and provide secure mutual agreement in p
 
 2. Technology Stack :
 
- Ethereum, Solidity, Truffle, MongoDB, NodeJS, Web 3.0, IPFS, Escrow API, ERC 721 token
+ *Ethereum, Solidity, Truffle, MongoDB, NodeJS, Web 3.0, IPFS, Escrow API, ERC 721 token.
 
- HTML, CSS, Bootstrap, AngularJS, Google Map API, Metamask, Ganache.
+ *HTML, CSS, Bootstrap, AngularJS, Google Map API, Metamask, Ganache.
 3. User interaction : For the user, Web Application is developed to implement all the above described functionalities.
 
 * Application:
