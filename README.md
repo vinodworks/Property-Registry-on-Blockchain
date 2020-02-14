@@ -4,18 +4,18 @@ Registering information of property is very crucial to identify current and prev
 
 1. Features :
 
-Introducing non-fungibility by tokenizing every property
-Ownership history
-Property Registry
-Search Property
-Property Details
-Change ownership request
-Current Owner Documents View
-Approve ownership request
-Monitor Blockchain activities
-Visualize property images (In case of land department - with google map)
-View ownership history
-Escrow Account for safe fund transfer
+*Introducing non-fungibility by tokenizing every property
+*Ownership history
+*Property Registry
+*Search Property
+*Property Details
+*Change ownership request
+*Current Owner Documents View
+*Approve ownership request
+*Monitor Blockchain activities
+*Visualize property images (In case of land department - with google map)
+*View ownership history
+*Escrow Account for safe fund transfer
 
 2. Features that are good to have :
 
@@ -60,4 +60,5 @@ Blockchain will ensure the validity in chain of ownership which will prohibit se
 5. User Interaction -
 
 User interface will enable users to browse through registered property (either land or vehicle or other properties), admin can validate new property (genesis) by stating - property value, property ID, Issue Date, property owner, property owner aadhar number Property owner can request a change in ownership. Relevant documents will be uploaded on secure distributed ledger by IPFS (Inter Planetary File System), respective property department admin (selected randomly) will validate the request and current owner will approve the ownership change request and this way property ownership will be changed.
-Thank you Pankaj Devesh, Rupali Patel for their contribution in making live this project.
+
+Thank you Pankaj Devesh, Rupali Patel for their contribution in making this project live.
