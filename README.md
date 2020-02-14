@@ -60,3 +60,4 @@ Blockchain will ensure the validity in chain of ownership which will prohibit se
 5. User Interaction -
 
 User interface will enable users to browse through registered property (either land or vehicle or other properties), admin can validate new property (genesis) by stating - property value, property ID, Issue Date, property owner, property owner aadhar number Property owner can request a change in ownership. Relevant documents will be uploaded on secure distributed ledger by IPFS (Inter Planetary File System), respective property department admin (selected randomly) will validate the request and current owner will approve the ownership change request and this way property ownership will be changed.
+Thank you Pankaj Devesh, Rupali Patel for their contribution in making live this project.
